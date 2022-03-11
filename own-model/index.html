@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.14.0/dist/tf.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <img id="image" src="dog.jpeg" />
+    </div>
+    <form>
+      <input type="file" id="image-input" />
+
+      <br />
+      <label for="">Model</label>
+      <input type="file" id="upload-model" />
+      <br />
+      <label for="">Weights</label>
+      <input type="file" id="upload-weights" />
+      <br />
+      <label for="">Metadata</label>
+      <input type="file" id="upload-metadata" />
+    </form>
+    <p id="watermark"></p>
+    <p id="no-watermark"></p>
+  </body>
+  <script defer src="index.js"></script>
+</html>
