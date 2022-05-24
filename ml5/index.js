@@ -5,6 +5,7 @@ let state = 'collection'
 
 function setup() {
   createCanvas(400, 400)
+  background(255)
 
   const options = {
     inputs: ['x', 'y'],
@@ -13,7 +14,32 @@ function setup() {
     debug: 'true',
   }
   model = ml5.neuralNetwork(options)
+  model.loadData('mouse-notes.json', dataLoaded)
+  const modelInfo = {
+    model: 'model/model.json',
+    metadata: 'model/model_meta.json',
+    weights: 'model/model.weights.bin',
+  }
+  model.load(modelInfo, modelLoaded)
 }
+function modelLoaded() {
+  console.log('model loaded.')
+  state = 'prediction'
+}
+function dataLoaded() {
+  console.log(model.data.data)
+
+  // for (let i = 0; i < data.length; i++) {
+  //   stroke(0)
+  //   noFill()
+  //   ellipse(inputs.x, inputs.y, 24)
+  //   fill(0)
+  //   noStroke()
+  //   textAlign(CENTER, CENTER)
+  //   text(target.label, inputs.x, inputs.y)
+  // }
+}
+
 function keyPressed() {
   if (key == 't') {
     state = 'training'
@@ -25,6 +51,8 @@ function keyPressed() {
     model.train(options, whileTraining, finishedTraining)
   } else if (key == 's') {
     model.saveData('mouse-notes')
+  } else if (key == 'm') {
+    model.save('model')
   } else {
     targetLabel = key.toUpperCase()
   }
