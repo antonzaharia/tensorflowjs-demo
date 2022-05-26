@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    random_name_generator (2.0.1)
+    rmagick (4.2.5)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  random_name_generator
+  rmagick
+
+BUNDLED WITH
+   2.3.14

@@ -5,7 +5,13 @@ const container = document.getElementById('container')
 const stateElement = document.getElementById('state')
 stateElement.innerHTML = 'Upload No watermark images'
 
-const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded)
+const featureExtractor = ml5.featureExtractor(
+  'MobileNet',
+  {
+    epochs: 200,
+  },
+  modelLoaded
+)
 const classifier = featureExtractor.classification(imageLoaded)
 
 document.getElementById('image-input').addEventListener('change', async (event) => {
